@@ -1,79 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>msm_tools</RootNamespace>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <Platforms>x86;x64</Platforms>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>    
-  </PropertyGroup> 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <DefineConstants>TRACE;DEBUGX86</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <DefineConstants>TRACE;DEBUGX64</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <DefineConstants>TRACE;RELEASEX86</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <DefineConstants>TRACE;RELEASEX64</DefineConstants>
-  </PropertyGroup>
-  <ItemGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <Reference Include="movespacewrapper">
-      <HintPath>Assemblies\MoveSpaceWrapper.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <Reference Include="movespacewrapper">
-      <HintPath>Assemblies\MoveSpaceWrapper.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <None Update="Assemblies\jdScoring.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <None Update="Assemblies\jdScoring.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="NativeFileDialogSharp" Version="0.5.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="MoveSpaceWrapper">
-      <HintPath>Assemblies\MoveSpaceWrapper.dll</HintPath>
-    </Reference>
-    <Reference Include="MoveSpaceTool">
-      <HintPath>Assemblies\MoveSpaceTool.dll</HintPath>
-    </Reference>
-    <Reference Include="JD.DTO">
-      <HintPath>Assemblies\JD.DTO.dll</HintPath>
-    </Reference>
-    <Reference Include="MSPClassifier">
-      <HintPath>Assemblies\MSPClassifier.dll</HintPath>
-    </Reference>
-    <Reference Include="MSPMatrixVector">
-      <HintPath>Assemblies\MSPMatrixVector.dll</HintPath>
-    </Reference>
-    <Reference Include="MSPStats">
-      <HintPath>Assemblies\MSPStats.dll</HintPath>
-    </Reference>
-    <Reference Include="TmlDtapeMoveExtractor">
-      <HintPath>Assemblies\TmlDtapeMoveExtractor.dll</HintPath>
-    </Reference>
-    <Reference Include="RecMoveExtractor">
-      <HintPath>Assemblies\RecMoveExtractor.dll</HintPath>
-    </Reference>
-    <Reference Include="RecTool">
-      <HintPath>Assemblies\RecTool.dll</HintPath>
-    </Reference>
-    <Reference Include="MoveReaderInterface">
-      <HintPath>Assemblies\MoveReaderInterface.dll</HintPath>
-    </Reference>
-  </ItemGroup>
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <ApplicationManifest>Startup/app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <PublishAot>true</PublishAot>
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.2.1" />
+        <PackageReference Include="Avalonia.Desktop" Version="11.2.1" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.1" />
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.1" />
+        <PackageReference Include="Avalonia.Diagnostics" Version="11.2.1">
+            <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+            <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="FluentAvaloniaUI" Version="2.2.0" />
+    </ItemGroup>
 </Project>

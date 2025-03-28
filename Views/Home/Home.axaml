@@ -1,0 +1,72 @@
+<Window
+    x:Class="Views.Home"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:ViewModels"
+    Title="{Binding Title}"
+    Width="500"
+    Height="600"
+    d:DesignHeight="600"
+    d:DesignWidth="500"
+    x:DataType="vm:HomeViewModel"
+    CanResize="False"
+    TransparencyLevelHint="Mica"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Design.DataContext>
+        <vm:HomeViewModel />
+    </Design.DataContext>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button
+                Margin="0,0,25,25"
+                HorizontalAlignment="Center"
+                Click="NewProjectButton_Click"
+                Content="New Project" />
+            <Button
+                Margin="0,0,0,25"
+                HorizontalAlignment="Center"
+                Click="SearchProjectsButton_Click"
+                Content="Search Projects" />
+        </StackPanel>
+        <Border
+            Width="350"
+            Height="300"
+            Margin="10"
+            Padding="5"
+            BorderBrush="Gray"
+            BorderThickness="1"
+            CornerRadius="10">
+            <ScrollViewer>
+                <ListBox
+                    x:Name="ProjectsListBox"
+                    SelectionChanged="ProjectsListBox_SelectionChanged"
+                    SelectionMode="Single">
+                    <ListBoxItem>Project Alpha</ListBoxItem>
+                    <ListBoxItem>Project Beta</ListBoxItem>
+                    <ListBoxItem>Project Gamma</ListBoxItem>
+                    <ListBoxItem>Project Delta</ListBoxItem>
+                    <ListBoxItem>Project Alpha</ListBoxItem>
+                    <ListBoxItem>Project Beta</ListBoxItem>
+                    <ListBoxItem>Project Gamma</ListBoxItem>
+                    <ListBoxItem>Project Delta</ListBoxItem>
+                    <ListBoxItem>Project Alpha</ListBoxItem>
+                    <ListBoxItem>Project Beta</ListBoxItem>
+                    <ListBoxItem>Project Gamma</ListBoxItem>
+                    <ListBoxItem>Project Delta</ListBoxItem>
+                </ListBox>
+            </ScrollViewer>
+        </Border>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button
+                x:Name="OpenSelectedButton"
+                Margin="0,25,0,0"
+                HorizontalAlignment="Center"
+                Click="NewProjectButton_Click"
+                Content="Open Selected"
+                IsEnabled="False" />
+        </StackPanel>
+    </StackPanel>
+</Window>
